@@ -1,0 +1,23 @@
+import css from "./ImageGallery.module.css";
+import ImageCard from "../ImageCard/ImageCard";
+import { Link } from "../App.types";
+import { Image } from "../App.types";
+
+interface ImageGalleryProps {
+  items: Image[];
+  onImageClick: (slug: string) => void;
+}
+
+const ImageGallery: React.FC<ImageGalleryProps> = ({ items, onImageClick }) => {
+  return (
+    <ul className={css.galleryList}>
+      {items.map(({ id, urls, slug }) => (
+        <li key={id}>
+          <ImageCard imgLink={urls} imgSlug={slug} onClick={onImageClick} />
+        </li>
+      ))}
+    </ul>
+  );
+};
+
+export default ImageGallery;
