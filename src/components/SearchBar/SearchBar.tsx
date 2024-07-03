@@ -1,51 +1,42 @@
 import css from "./SearchBar.module.css";
-import toast, { Toaster } from "react-hot-toast";
-
-
-interface Target extends EventTarget {
-  query: HTMLInputElement;
-}
+import { Formik, Form, Field } from "formik";
+import toast from "react-hot-toast";
 
 interface SearchBarProps {
   onSearch: (query: string) => void;
 }
 
-export default function SearchBar({ onSearch }: SearchBarProps) {
-
-  const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
-    evt.preventDefault();
-    const form = evt.target as Target;
-    const query = form.query.value;
-
-    if (query.trim() === "") {
-      toast("Please fill in search folder", {
-        style: {
-          color: "red",
-        },
-      });
-      return;
-    }
-
-    onSearch(query);   
-      // form.reset();
-  };
-
+const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   return (
-    <header className={css.header}>
-      <form className={css.form} onSubmit={handleSubmit}>
-        <input
-          className={css.input}
-          type="text"
-          name="query"
-          autoComplete="off"
-          autoFocus
-          placeholder="Search images and photos"
-        />
-        <button className={css.btn} type="submit">
-          Search
-        </button>
-        <Toaster />
-      </form>
-    </header>
+    <Formik
+      initialValues={{ query: "" }}
+      onSubmit={(values, actions) => {
+        if (values.query.trim() !== "") {
+          onSearch(values.query);
+          actions.resetForm();
+        } else {
+          toast.error("The search field is empty. Please try again!", {
+            position: "top-right",
+          });
+        }
+        return;
+      }}
+    >
+      <div className={css.searchBar}>
+        <Form className={css.form}>
+          <Field
+            className={css.input}
+            type="text"
+            name="query"
+            placeholder="Search images and photos"
+          />
+          <button className={css.btn} type="submit">
+            Search
+          </button>
+        </Form>
+      </div>
+    </Formik>
   );
 }
+
+export default SearchBar

@@ -10,6 +10,8 @@
     border-radius: 4px;
     padding: 0;
     position: absolute;
+    cursor: pointer;
+    background-color: black;
 }
 .modalImg {
     max-width: 700px;
@@ -17,4 +19,13 @@
 }
 .modalOpen {
     overflow: hidden;
+}
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.696);
 }

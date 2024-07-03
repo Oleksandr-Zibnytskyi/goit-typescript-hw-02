@@ -1,32 +1,25 @@
 import css from "./ImageCard.module.css";
-import { Link } from "../App.types";
+import { Images } from "../types";
 
 interface ImageCardProps {
-  imgLink: Link;
-  imgSlug: string;
-  onClick: (imageUrl: string) => void;
+  image: Images;
+  onClick: (alt_description: string, urls: string) => void;
 }
 
-
-const ImageCard: React.FC<ImageCardProps> = ({
-  imgLink: { small },
-  imgSlug,
-  onClick,
-}) => {
+const ImageCard: React.FC<ImageCardProps> = ({ image, onClick }) => {
   const handleClick = () => {
-    onClick(small);
+    onClick(image.alt_description, image.urls.regular); 
   };
 
   return (
-    <div>
+    <div className={css.container} onClick={handleClick}>
       <img
-        className={css.card}
-        src={small}
-        alt={imgSlug}
-        onClick={handleClick}
+        className={css.image}
+        src={image.urls.small}
+        alt={image.alt_description}
       />
     </div>
   );
 };
 
-export default ImageCard;
+export default ImageCard

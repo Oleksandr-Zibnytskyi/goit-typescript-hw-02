@@ -4,7 +4,7 @@ export default function Loader() {
   return (
     <div>
       <Audio height="80" width="80" color="blue" ariaLabel="loading" />
-      <p>Loading data, please wait...</p>
+      <p>please wait...</p>
     </div>
   );
 }

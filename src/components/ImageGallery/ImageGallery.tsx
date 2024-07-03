@@ -1,19 +1,20 @@
 import css from "./ImageGallery.module.css";
 import ImageCard from "../ImageCard/ImageCard";
-import { Link } from "../App.types";
-import { Image } from "../App.types";
+import { Images } from '../types';
 
 interface ImageGalleryProps {
-  items: Image[];
-  onImageClick: (slug: string) => void;
+  items: Images[];
+  openModal: (alt_description: string, urls: string) => void;
 }
-
-const ImageGallery: React.FC<ImageGalleryProps> = ({ items, onImageClick }) => {
+const ImageGallery: React.FC<ImageGalleryProps> = ({ items, openModal }) => {
   return (
     <ul className={css.galleryList}>
-      {items.map(({ id, urls, slug }) => (
-        <li key={id}>
-          <ImageCard imgLink={urls} imgSlug={slug} onClick={onImageClick} />
+      {items.map((item) => (
+        <li key={item.id} className={css.galleryItem}>
+          <ImageCard
+            image={item}
+            onClick={() => openModal(item.alt_description, item.urls.regular)}
+          />
         </li>
       ))}
     </ul>
