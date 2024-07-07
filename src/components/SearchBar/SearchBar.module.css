@@ -17,7 +17,7 @@
 }
 
 .input {
-  background-color: #c2c2c2;
+  background-color: #cccccc;
   color: rgb(0, 0, 0);
   display: inline;
   padding-left: 10px;
@@ -30,13 +30,13 @@
 }
 
 .btn {
-  color: aliceblue;
-  background-color: rgb(91, 91, 91);
+  color: rgb(91, 91, 91);
+  background-color: #cccccc;
   margin: 20px;
   border-radius: 7px;
   border: none;
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 2px solid rgb(91, 91, 91);
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
@@ -45,5 +45,6 @@
 }
 
 .btn:hover {
-  background-color: rgba(33, 162, 168, 0.916);
+  background-color: rgba(138, 138, 138, 0.916);
+  color: #e4e4e4;
 }

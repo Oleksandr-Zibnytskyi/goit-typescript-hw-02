@@ -17,5 +17,6 @@
     }
 
 .btnLoad:hover {
-    background-color: rgba(33, 170, 177, 0.916);
+    background-color: #cccccc;
+    color: rgb(91, 91, 91);
 }
