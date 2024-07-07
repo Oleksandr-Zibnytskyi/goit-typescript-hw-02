@@ -5,11 +5,17 @@
     margin-bottom: 25px;
     margin-top: 25px;
     color: aliceblue;
-    background-color: rgb(19, 155, 213);
-    border-radius: 25px;
+    background-color: rgb(91, 91, 91);
+    border-radius: 7px;
     border: none;
+    border-radius: 8px;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: border-color 0.25s;
     }
 
 .btnLoad:hover {
-    background-color: rgba(52, 199, 207, 0.916);
+    background-color: rgba(33, 170, 177, 0.916);
 }
